@@ -70,6 +70,7 @@ int main(int argc, const char **argv) {
 
 		if(ext) {
 			if(streq(ext, ".c")) language = LANG_C;
+			else if(streq(ext, ".h")) language = LANG_C;
 		}
 
 		print_file(language, file);
