@@ -7,12 +7,28 @@
 
 TSLanguage *tree_sitter_c();
 
-static void dump_node(TSNode node, int depth) {
-	printf("%*s%s\n", 2 * depth, " ", ts_node_type(node));
+static void print_tree(TSNode node, const char *content) {
+	static uint32_t prev_token_end = 0;
 
 	uint32_t child_count = ts_node_child_count(node);
+	
+	if(child_count == 0) {
+		uint32_t token_start = ts_node_start_byte(node);
+		uint32_t token_end   = ts_node_end_byte(node);
+
+		for(uint32_t i = prev_token_end; i < token_start; ++i) {
+			putc(content[i], stdout);
+		}
+
+		prev_token_end = token_end;
+
+		for(uint32_t i = token_start; i < token_end; ++i) {
+			putc(content[i], stdout);
+		}
+	}
+
 	for(uint32_t i = 0; i < child_count; ++i) {
-		dump_node(ts_node_child(node, i), depth + 1);
+		print_tree(ts_node_child(node, i), content);
 	}
 }
 
@@ -34,7 +50,7 @@ void print_formatted_file(Lang language, const char *content, size_t len) {
 
 	TSTree *tree = ts_parser_parse_string(parser, NULL, content, len);
 
-	dump_node(ts_tree_root_node(tree), 0);
+	print_tree(ts_tree_root_node(tree), content);
 
 	ts_tree_delete(tree);
 	ts_parser_delete(parser);
