@@ -49,6 +49,8 @@ void print_file(const char *path) {
 	} else {
 		printf("%*s", (int) len, content);
 	}
+
+	free(content);
 }
 
 int main(int argc, const char **argv) {
