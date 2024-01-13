@@ -47,7 +47,7 @@ void print_file(const char *path) {
 	if(read_file(path, &content, &len)) {
 		fprintf(stderr, "%s: %s: %s\n", program, path, strerror(errno));
 	} else {
-		printf("%*s\n", (int) len, content);
+		printf("%*s", (int) len, content);
 	}
 }
 
@@ -56,5 +56,6 @@ int main(int argc, const char **argv) {
 	
 	while(argc) {
 		print_file(next_arg(&argc, &argv));
+		if(argc) printf("\n");
 	}
 }
