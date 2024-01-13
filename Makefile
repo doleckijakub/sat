@@ -1,8 +1,15 @@
 .PHONY: all
 all: test
 
-sat: main.c formatter.c | formatter.h
-	cc -o $@ $^
+CC = cc
+
+C_FLAGS += -I tree-sitter/lib/src
+C_FLAGS += -I tree-sitter/lib/include
+
+PARSERS += parsers/tree-sitter-c/src/parser.c
+
+sat: main.c formatter.c tree-sitter/lib/src/lib.c $(PARSERS) | formatter.h
+	$(CC) -o $@ $(C_FLAGS) $^
 
 .PHONY: test
 test: sat main.c

@@ -55,13 +55,24 @@ void print_file(Lang language, const char *path) {
 	free(content);
 }
 
+int streq(const char *a, const char *b) {
+	return strcmp(a, b) == 0;
+}
+
 int main(int argc, const char **argv) {
 	program = next_arg(&argc, &argv);
 
 	Lang language = LANG_NONE;
 	
 	while(argc) {
-		print_file(language, next_arg(&argc, &argv));
+		const char *file = next_arg(&argc, &argv);
+		const char *ext = strrchr(file, '.');
+
+		if(ext) {
+			if(streq(ext, ".c")) language = LANG_C;
+		}
+
+		print_file(language, file);
 		if(argc) printf("\n");
 	}
 }
