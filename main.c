@@ -4,6 +4,8 @@
 #include <errno.h>
 #include <stdlib.h>
 
+#include "formatter.h"
+
 static const char *program;
 
 const char *next_arg(int *argc, const char ***argv) {
@@ -40,14 +42,14 @@ error:
 	return 1;
 }
 
-void print_file(const char *path) {
+void print_file(Lang language, const char *path) {
 	char *content;
 	size_t len;
 
 	if(read_file(path, &content, &len)) {
 		fprintf(stderr, "%s: %s: %s\n", program, path, strerror(errno));
 	} else {
-		printf("%*s", (int) len, content);
+		print_formatted_file(language, content, len);
 	}
 
 	free(content);
@@ -55,9 +57,11 @@ void print_file(const char *path) {
 
 int main(int argc, const char **argv) {
 	program = next_arg(&argc, &argv);
+
+	Lang language = LANG_NONE;
 	
 	while(argc) {
-		print_file(next_arg(&argc, &argv));
+		print_file(language, next_arg(&argc, &argv));
 		if(argc) printf("\n");
 	}
 }
