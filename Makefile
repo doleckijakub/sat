@@ -15,8 +15,8 @@ SRC_FILES += color_schemes/*.c
 SRC_FILES += tree-sitter/lib/src/lib.c
 SRC_FILES += $(PARSERS)
 
-sat: $(SRC_FILES) | src/*.h
-	$(CC) -o $@ $(C_FLAGS) $^
+sat: $(SRC_FILES) src/*.h
+	$(CC) -o $@ $(C_FLAGS) $(SRC_FILES)
 
 .PHONY: test
 test: sat src/main.c
