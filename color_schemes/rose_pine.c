@@ -49,6 +49,10 @@ ANSI_Color color_scheme_rose_pine(TokenType t) {
 		case TOKEN_TYPE_NUMBER_LITERAL:
 		case TOKEN_TYPE_CHARACTER:
 			return main.gold;
+		case TOKEN_TYPE_COMMENT:
+			return main.subtle; // TODO: add italics support
+		case TOKEN_TYPE_STATEMENT_IDENTIFIER:
+			return main.pine; // TODO: add bold support
 		case TOKEN_TYPE_KEYWORD:
 		case TOKEN_TYPE_PRIMITIVE:
 		case TOKEN_TYPE_ESCAPE_SEQUENCE:
