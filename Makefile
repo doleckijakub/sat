@@ -3,6 +3,7 @@ all: test
 
 CC = cc
 
+C_FLAGS += -Wswitch
 C_FLAGS += -I tree-sitter/lib/src
 C_FLAGS += -I tree-sitter/lib/include
 C_FLAGS += -I src
