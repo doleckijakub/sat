@@ -56,11 +56,14 @@ static TokenMapEntry token_map[] = {
 	{ "switch", TOKEN_TYPE_KEYWORD },
 	{ "case", TOKEN_TYPE_KEYWORD },
 	{ "default", TOKEN_TYPE_KEYWORD },
+	{ "union", TOKEN_TYPE_KEYWORD },
 
 	{ "primitive_type", TOKEN_TYPE_PRIMITIVE },
 	
 	{ "comment", TOKEN_TYPE_COMMENT },
 
+	{ "%",  TOKEN_TYPE_OPERATOR },
+	{ "?",  TOKEN_TYPE_OPERATOR },
 	{ "!",  TOKEN_TYPE_OPERATOR },
 	{ "~",  TOKEN_TYPE_OPERATOR },
 	{ "+",  TOKEN_TYPE_OPERATOR },
