@@ -66,6 +66,8 @@ ANSI_Color color_scheme_rose_pine(TokenType t) {
 			return main.foam;
 		case TOKEN_TYPE_IDENTIFIER:
 			return main.text;
+		case TOKEN_TYPE_BOOLEAN:
+			return main.rose;
 		default:
 			return 0xff00ff;
 	}

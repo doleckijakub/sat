@@ -51,6 +51,11 @@ static TokenMapEntry token_map[] = {
 	{ "for", TOKEN_TYPE_KEYWORD },
 	{ "break", TOKEN_TYPE_KEYWORD },
 	{ "goto", TOKEN_TYPE_KEYWORD },
+	{ "do", TOKEN_TYPE_KEYWORD },
+	{ "continue", TOKEN_TYPE_KEYWORD },
+	{ "switch", TOKEN_TYPE_KEYWORD },
+	{ "case", TOKEN_TYPE_KEYWORD },
+	{ "default", TOKEN_TYPE_KEYWORD },
 
 	{ "primitive_type", TOKEN_TYPE_PRIMITIVE },
 	
@@ -109,8 +114,14 @@ static TokenMapEntry token_map[] = {
 	{ ",", TOKEN_TYPE_PUNCTUATION },
 
 	{ "number_literal", TOKEN_TYPE_NUMBER_LITERAL },
+	{ "NULL", TOKEN_TYPE_NUMBER_LITERAL },
 
 	{ "escape_sequence", TOKEN_TYPE_ESCAPE_SEQUENCE },
+
+	{ "false", TOKEN_TYPE_BOOLEAN },
+	{ "FALSE", TOKEN_TYPE_BOOLEAN },
+	{ "true", TOKEN_TYPE_BOOLEAN },
+	{ "TRUE", TOKEN_TYPE_BOOLEAN },
 };
 
 TokenType token_type_from_str(const char *str) {

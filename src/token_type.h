@@ -19,6 +19,7 @@ typedef enum {
 	TOKEN_TYPE_FIELD_IDENTIFIER,
 	TOKEN_TYPE_CHARACTER,
 	TOKEN_TYPE_STATEMENT_IDENTIFIER,
+	TOKEN_TYPE_BOOLEAN,
 } TokenType;
 
 TokenType token_type_from_str(const char *str);
