@@ -22,6 +22,64 @@ static TokenMapEntry token_map[] = {
 	{ "#include",  TOKEN_TYPE_PREPROC },
 	{ "#elifdef",  TOKEN_TYPE_PREPROC },
 	{ "#elifndef", TOKEN_TYPE_PREPROC },
+	{ "preproc_directive", TOKEN_TYPE_PREPROC },
+
+	{ "system_lib_string", TOKEN_TYPE_SYS_LIB_STRING },
+	
+	{ "\"",             TOKEN_TYPE_STRING },
+	{ "string_content", TOKEN_TYPE_STRING },
+	
+	{ "character", TOKEN_TYPE_CHARACTER },
+	{ "'", TOKEN_TYPE_CHARACTER },
+	
+	{ "if", TOKEN_TYPE_KEYWORD },
+	{ "else", TOKEN_TYPE_KEYWORD },
+	{ "static", TOKEN_TYPE_KEYWORD },
+	{ "const",  TOKEN_TYPE_KEYWORD },
+	{ "return", TOKEN_TYPE_KEYWORD },
+	{ "typedef", TOKEN_TYPE_KEYWORD },
+	{ "struct", TOKEN_TYPE_KEYWORD },
+	{ "while", TOKEN_TYPE_KEYWORD },
+
+	{ "primitive_type", TOKEN_TYPE_PRIMITIVE },
+
+	{ "+",  TOKEN_TYPE_OPERATOR },
+	{ "+=", TOKEN_TYPE_OPERATOR },
+	{ "-",  TOKEN_TYPE_OPERATOR },
+	{ "-=", TOKEN_TYPE_OPERATOR },
+	{ "*",  TOKEN_TYPE_OPERATOR },
+	{ "*=", TOKEN_TYPE_OPERATOR },
+	{ "/",  TOKEN_TYPE_OPERATOR },
+	{ "/=", TOKEN_TYPE_OPERATOR },
+	{ ">",  TOKEN_TYPE_OPERATOR },
+	{ ">=", TOKEN_TYPE_OPERATOR },
+	{ "<",  TOKEN_TYPE_OPERATOR },
+	{ "<=", TOKEN_TYPE_OPERATOR },
+	{ "==", TOKEN_TYPE_OPERATOR },
+	{ "=",  TOKEN_TYPE_OPERATOR },
+	{ "--", TOKEN_TYPE_OPERATOR },
+	{ "++", TOKEN_TYPE_OPERATOR },
+	{ "&", TOKEN_TYPE_OPERATOR },
+
+	{ "identifier", TOKEN_TYPE_IDENTIFIER },
+	{ "type_identifier", TOKEN_TYPE_TYPE_IDENTIFIER },
+	{ "field_identifier", TOKEN_TYPE_FIELD_IDENTIFIER },
+
+	{ ";", TOKEN_TYPE_DELIMITER },
+	{ ".", TOKEN_TYPE_DELIMITER },
+	{ "->", TOKEN_TYPE_DELIMITER },
+
+	{ "(", TOKEN_TYPE_PUNCTUATION },
+	{ ")", TOKEN_TYPE_PUNCTUATION },
+	{ "{", TOKEN_TYPE_PUNCTUATION },
+	{ "}", TOKEN_TYPE_PUNCTUATION },
+	{ "[", TOKEN_TYPE_PUNCTUATION },
+	{ "]", TOKEN_TYPE_PUNCTUATION },
+	{ ",", TOKEN_TYPE_PUNCTUATION },
+
+	{ "number_literal", TOKEN_TYPE_NUMBER_LITERAL },
+
+	{ "escape_sequence", TOKEN_TYPE_ESCAPE_SEQUENCE },
 };
 
 TokenType token_type_from_str(const char *str) {
