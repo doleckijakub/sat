@@ -1,6 +1,8 @@
 #ifndef ANSI_H
 #define ANSI_H
 
+#include <stdint.h>
+
 #define ANSI_RESET         "\x1b[0m"
 #define ANSI_BOLD          "\x1b[1m"
 #define ANSI_UNDERLINE     "\x1b[4m"
@@ -13,6 +15,17 @@
 #define ANSI_CYAN          "\x1b[36m"
 #define ANSI_WHITE         "\x1b[37m"
 
-#define ANSI_RGB(r, g, b)  "\x1b[38;2;"#r";"#g";"#b"m"
+typedef uint32_t ANSI_Color;
+
+#define ANSI_COLOR_ARG(color) \
+	((color) >> 16 & 0xff), \
+	((color) >>  8 & 0xff), \
+	((color) >>  0 & 0xff)
+
+#define ANSI_COLOR_FMT "\x1b[38;2;%d;%d;%dm"
+
+// so that we can have code like this
+// ANSI_Color color = ...;
+// printf("Uncolored text" ANSI_COLOR_FMT "Colored text", ANSI_COLOR_ARG(color));
 
 #endif

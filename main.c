@@ -5,6 +5,7 @@
 
 #include "read_file.h"
 #include "formatter.h"
+#include "color_schemes.h"
 
 static const char *program;
 
@@ -29,12 +30,24 @@ void print_file(Lang language, const char *path) {
 	free(content);
 }
 
+typedef struct {
+	const char *key;
+	ColorScheme value;
+} ColorSchemeMapEntry;
+
+static ColorSchemeMapEntry color_scheme_map[] = {
+#define X(color_scheme) { COLOR_SCHEME_NAME(color_scheme), COLOR_SCHEME_FUNC(color_scheme) },
+	COLOR_SCHEMES(X)
+#undef X
+};
+
 int streq(const char *a, const char *b) { return strcmp(a, b) == 0; }
 
 int main(int argc, const char **argv) {
 	program = next_arg(&argc, &argv);
 
 	Lang language = LANG_NONE;
+	set_color_scheme(color_scheme_map[0].value);
 	
 	while(argc) {
 		const char *file = next_arg(&argc, &argv);
