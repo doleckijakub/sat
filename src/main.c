@@ -25,9 +25,8 @@ void print_file(Lang language, const char *path) {
 		fprintf(stderr, "%s: %s: %s\n", program, path, strerror(errno));
 	} else {
 		print_formatted_file(language, content, len);
+		free(content);
 	}
-
-	free(content);
 }
 
 typedef struct {
