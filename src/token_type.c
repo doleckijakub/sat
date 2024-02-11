@@ -134,6 +134,5 @@ TokenType token_type_from_str(const char *str) {
 		}
 	}
 
-	printf(ANSI_RESET "\nUnhandled token type: '%s'\n", str);
-	exit(1);
+	return TOKEN_TYPE_UNKNOWN;
 }
